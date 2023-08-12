@@ -4,7 +4,41 @@ namespace Game.Core.Mortal
 {
     public class MortalController : MonoBehaviour
     {
-     
+        [SerializeField] private MortalMoodsView _moods;
+        private float _timer = 0.0f;
+        private float _interval = 1f;
+        
+        private void Start()
+        {
+            //setup
+            SetupMortal();
+        }
+
+        private void SetupMortal()
+        {
+            if (_moods == null)
+            {
+                _moods = GetComponent<MortalMoodsView>() ?? _moods;
+            }
+
+            if (_moods == null)
+            {
+                _moods = gameObject.AddComponent<MortalMoodsView>();
+            }
+        }
+        
+        private void Update()
+        {
+            _timer += Time.deltaTime;
+            if (_timer >= _interval)
+            {
+                if (_moods != null)
+                    _moods.HandleDefaultMoodDecay();
+
+                // Reset the timer
+                _timer = 0.0f;
+            }
+        }
     }
 }
 

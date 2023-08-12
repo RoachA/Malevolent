@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Game.Core.Mortal
@@ -5,27 +6,47 @@ namespace Game.Core.Mortal
     public interface IHaveMoods
     {
         public MortalMoodsData MoodsData { get; set; }
+
+        public void SetMood(MoodType type, float val);
+
+        public MortalMoodsData GetAllMoods();
+
+        public void InitMoodData(MortalMoodsData data = default);
+
+        public float GetMoodValueOfType(MoodType type);
     }
     
-    public abstract class MortalMoodsData
+    [Serializable]
+    public class MortalMoodsData
     {
-        public Dictionary<MoodType, int> MoodsData;
+        public Dictionary<MoodType, float> Data;
 
-        public void SetMood(MoodType type, int val)
+        public MortalMoodsData(Dictionary<MoodType, float> data = null)
         {
-            if (MoodsData.ContainsKey(type))
+             if (data != null)
+             {
+                Data = data;
+                return;
+             }
+             
+             Data = new Dictionary<MoodType, float>();
+        }
+        
+        public void SetMood(MoodType type, float val)
+        {
+            if (Data.ContainsKey(type))
             {
-                MoodsData[type] = val;
+                Data[type] = val;
             }
             else
             {
-                MoodsData.Add(type, val);
+                Data.Add(type, val);
             }
         }
 
-        public int GetMood(MoodType type)
+        public float GetMood(MoodType type)
         {
-            if (MoodsData.TryGetValue(type, out int value))
+            if (Data.TryGetValue(type, out float value))
             {
                 return value;
             }

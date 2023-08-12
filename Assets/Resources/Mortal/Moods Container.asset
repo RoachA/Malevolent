@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9428dd929c9ab458c221cbeec768c5, type: 3}
+  m_Name: Moods Container
+  m_EditorClassIdentifier: 
+  MoodInfo:
+  - Mood: 0
+    DecimationPerSecond: 0.138
+  - Mood: 1
+    DecimationPerSecond: 0.216
+  - Mood: 2
+    DecimationPerSecond: 0.235
+  - Mood: 3
+    DecimationPerSecond: 0.153
+  - Mood: 4
+    DecimationPerSecond: 0.204
+  - Mood: 5
+    DecimationPerSecond: 0.38

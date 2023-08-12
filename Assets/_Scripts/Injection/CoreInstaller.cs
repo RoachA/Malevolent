@@ -1,3 +1,4 @@
+using Game.Core.Mortal;
 using Zenject;
 
 namespace Game.Core
@@ -6,7 +7,7 @@ namespace Game.Core
     {
         public override void InstallBindings()
         {
-            //Container.Bind<IScoreBoard>().To<ScoreBoard>().AsSingle().NonLazy();
+            //Container.Bind<MortalController>().AsSingle().NonLazy();
             // Container.Bind<ScoreManager>().AsSingle().Lazy();
         }
     }
