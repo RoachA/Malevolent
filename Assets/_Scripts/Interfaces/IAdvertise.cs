@@ -1,4 +1,6 @@
-
-public interface IAdvertise
+namespace Game.Core.Room
 {
+    public interface IAdvertise
+    {
+    }
 }

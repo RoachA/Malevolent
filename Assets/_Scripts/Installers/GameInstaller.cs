@@ -1,3 +1,4 @@
+using UnityEngine;
 using Zenject;
 
 namespace Game
@@ -8,6 +9,7 @@ namespace Game
         {
            // Container.BindInterfacesTo<GameInitializer>().AsSingle();
             Container.BindInstance(this).WhenInjectedInto<SceneContext>();
+            Container.Bind<MortalsContainer>().FromComponentInNewPrefab(new GameObject()).AsSingle();
 
             ///SIGNALS
             SignalBusInstaller.Install(Container);

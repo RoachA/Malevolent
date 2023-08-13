@@ -7,7 +7,10 @@ namespace Game.Core.Mortal
     public class MortalController : MonoBehaviour
     {
         [Inject] private SignalBus _bus;
+        [Inject] private MortalsContainer _mortalsContainer;
         [SerializeField] private MortalMoodsView _moods;
+        private bool isActive { get; set; }
+
         private float _timer = 0.0f;
         private float _interval = 1f;
 
@@ -38,6 +41,8 @@ namespace Game.Core.Mortal
             {
                 _moods = gameObject.AddComponent<MortalMoodsView>();
             }
+            
+            _mortalsContainer.RegisterMortal(this);
         }
 
         private void Update()
