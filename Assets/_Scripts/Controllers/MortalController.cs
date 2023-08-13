@@ -1,17 +1,30 @@
+using System;
 using UnityEngine;
+using Zenject;
 
 namespace Game.Core.Mortal
 {
     public class MortalController : MonoBehaviour
     {
+        [Inject] private SignalBus _bus;
         [SerializeField] private MortalMoodsView _moods;
         private float _timer = 0.0f;
         private float _interval = 1f;
-        
+
+        private void Awake()
+        {
+            _bus.Subscribe<UserJoinedSignal>(OnUserJoined);
+        }
+
         private void Start()
         {
             //setup
             SetupMortal();
+        }
+
+        private void OnUserJoined(UserJoinedSignal obj)
+        {
+            Debug.Log(obj.Username);
         }
 
         private void SetupMortal()
@@ -26,7 +39,7 @@ namespace Game.Core.Mortal
                 _moods = gameObject.AddComponent<MortalMoodsView>();
             }
         }
-        
+
         private void Update()
         {
             _timer += Time.deltaTime;
@@ -41,4 +54,3 @@ namespace Game.Core.Mortal
         }
     }
 }
-

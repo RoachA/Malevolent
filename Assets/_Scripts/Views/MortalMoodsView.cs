@@ -4,12 +4,14 @@ using System.Linq;
 using Game.Data;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Zenject;
 
 namespace Game.Core.Mortal
 {
     [ExecuteAlways]
     public class MortalMoodsView : MonoBehaviour, IHaveMoods
     {
+        [Inject] private SignalBus _bus;
         public MortalMoodsData MoodsData { get; set; }
         private Dictionary<MoodType, MoodEntryModifier> _moodModifiersData;
         
@@ -20,6 +22,8 @@ namespace Game.Core.Mortal
         {
             InitMoodData();
             LoadBaseMoodModifiers();
+            
+            _bus.Fire(new UserJoinedSignal("pensi"));
         }
         
         private void LoadBaseMoodModifiers()
