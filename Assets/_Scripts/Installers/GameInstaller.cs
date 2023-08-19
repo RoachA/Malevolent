@@ -7,9 +7,10 @@ namespace Game
     {
         public override void InstallBindings()
         {
+            //base.InstallBindings();
            // Container.BindInterfacesTo<GameInitializer>().AsSingle();
             Container.BindInstance(this).WhenInjectedInto<SceneContext>();
-            Container.Bind<MortalsContainer>().FromComponentInNewPrefab(new GameObject()).AsSingle();
+            Container.BindInterfacesAndSelfTo<MortalsContainer>().AsSingle();
 
             ///SIGNALS
             SignalBusInstaller.Install(Container);

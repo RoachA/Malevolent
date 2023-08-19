@@ -23,7 +23,7 @@ namespace Game.Core.Mortal
             InitMoodData();
             LoadBaseMoodModifiers();
             
-            _bus.Fire(new UserJoinedSignal("pensi"));
+            //_bus.Fire(new UserJoinedSignal("pensi"));
         }
         
         private void LoadBaseMoodModifiers()

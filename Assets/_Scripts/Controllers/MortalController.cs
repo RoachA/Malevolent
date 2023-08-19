@@ -16,7 +16,7 @@ namespace Game.Core.Mortal
 
         private void Awake()
         {
-            _bus.Subscribe<UserJoinedSignal>(OnUserJoined);
+//            _bus.Subscribe<UserJoinedSignal>(OnUserJoined);
         }
 
         private void Start()
